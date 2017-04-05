@@ -31,19 +31,16 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CPU_VARIANT2  := s5p6818
 
 TARGET_NO_BOOTLOADER := true
-TARGET_NO_KERNEL     := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_IS_2ND := false
+BOARD_KERNEL_BASE := 0x48000000
+BOARD_PAGE_SIZE := 0x0002048
+TARGET_PREBUILT_KERNEL := kernel/friendly-arm/nanopi3/arch/arm/boot
+BOARD_USES_UBOOT := true
+
 
 TARGET_PROVIDES_INIT_RC  := true
 
 # recovery
 TARGET_RECOVERY_FSTAB := device/friendly-arm/nanopi3/recovery.fstab
-TARGET_RELEASETOOLS_EXTENSIONS := device/friendly-arm/nanopi3
-TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_nanopi3
-
-# certificate
-PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/friendly-arm/nanopi3/security/releasekey
 
 # opengl
 BOARD_EGL_CFG := device/friendly-arm/nanopi3/egl.cfg
@@ -104,37 +101,6 @@ BOARD_HAS_RIL := false
 # HWC
 SLSIAP_HWC_VERSION := 2
 
-# sepolicy
-BOARD_SEPOLICY_DIRS := \
-	device/friendly-arm/nanopi3/sepolicy
-
-BOARD_SEPOLICY_REPLACE := \
-	app.te
-
-BOARD_SEPOLICY_UNION := \
-	file_contexts \
-	genfs_contexts \
-	adbd.te \
-	boardinit.te \
-	device.te \
-	domain.te \
-	file.te \
-	mediaserver.te \
-	surfaceflinger.te \
-	system_server.te \
-	init.te \
-	kernel.te \
-	servicemanager.te \
-	netd.te \
-	healthd.te \
-	sdcardd.te
-
-# ART
-ART_USE_HSPACE_COMPACT := true
-WITH_DEXPREOPT := true
-
-# for google gms
-#-include vendor/google/gapps/BoardConfigPartial.mk
 
 # packaging for emmc, sd
 TARGET_USERIMAGES_USE_EXT4 := true
