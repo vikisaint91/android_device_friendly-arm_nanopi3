@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo aosp_nanopi3-userdebug
-add_lunch_combo aosp_nanopi3-eng
+add_lunch_combo cm_nanopi3-userdebug
+add_lunch_combo cm_nanopi3-eng
